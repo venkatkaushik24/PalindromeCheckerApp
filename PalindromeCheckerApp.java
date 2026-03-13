@@ -6,21 +6,34 @@ public class PalindromeCheckerApp {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a word: ");
+        System.out.print("Enter a string: ");
         String word = sc.nextLine();
 
-        String reversed = "";
+        // Convert string to character array
+        char[] characters = word.toCharArray();
 
-        for(int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        int start = 0;
+        int end = characters.length - 1;
+
+        boolean isPalindrome = true;
+
+        // Two pointer comparison
+        while(start < end) {
+
+            if(characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
 
-        if(word.equalsIgnoreCase(reversed)) {
-            System.out.println("It is a palindrome");
+        if(isPalindrome) {
+            System.out.println("The string is a Palindrome");
         } else {
-            System.out.println("It is not a palindrome");
+            System.out.println("The string is NOT a Palindrome");
         }
 
     }
-
 }
